@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icons/icon.png">
+    <title>Wannapay</title>
+    <link rel="stylesheet" href="css/poppins.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="container" id="main-container">
+        <section id="section-info" class="flex-center">
+            <header id="header-info">
+                <img src="icons/card.png" alt="card">
+                <h2>Valida tu tarjeta de crédito. Rápido. Fácil. Seguro</h2>
+            </header>
+            <section id="main-info">
+                <h1>Wannapay</h1>
+                <p>Wannapay es una empresa internacional de verificación de tarjetas de crédito. 
+                   Ingresa los dígitos de tu tarjeta, valídala e instantáneamente tienes acceso a 
+                   miles de sitios de compras por internet en todo el mundo.</p>
+            </section>
+        </section>
+        <section id="section-form" class="flex-center">
+            <h1>Wannapay</h1>
+            <form id="form-card" method="POST">
+                <p>Ingresa los dígitos de tu tarjeta de crédito</p>
+                <input type="text" id="card-number" name="card-number" value="4083952015263" autocomplete="off">
+                <small>Error message</small>
+                <button>VERIFICAR</button>
+            </form>
+        </section>
+    </main>
+    <section class="container hide" id="section-message">
+        <article class="flex-center" id="article-message">
+            <img alt="logo" id="logo">
+            <p id="message">message</p>
+            <button id="btnReturn">REGRESAR</button>
+        </article>
+    </section>
+    <script src="js/app.js"></script>
+</body>
+</html>

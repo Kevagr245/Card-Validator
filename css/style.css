@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-color: #f44336;
+    --error-color: #ce4242;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.container
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.hide{
+    display: none;
+    visibility: hidden;
+}
+
+.flex-center{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;  
+    align-items: center;
+}
+
+.error-input{
+    border-color: var(--error-color);
+}
+
+#section-info{
+    width: 40%;
+    background-color: var(--bg-color);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#header-info{
+    height: 20%;
+}
+
+#header-info img{
+    width: 10%;
+    height: auto;
+}
+
+#header-info h2{
+    margin: 15px;
+    font-size: 15px;
+    font-style: italic;
+}
+
+#main-info{
+    height: 70%;
+}
+
+#main-info h1{
+    margin: 20px;
+    font-size: 30px;
+}
+
+#section-form h1{
+    display: none;
+    color: var(--bg-color);
+    margin-bottom: 30px;
+}
+
+#section-form{
+    width: 60%;    
+}
+
+#form-card{
+    display: block;
+}
+
+#form-card input, button{
+    display: block;
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+#form-card p{
+    text-align: center;
+}
+
+
+#form-card button{
+    border: none;
+    background-color: #263238;
+    color: white;
+    border-radius: 5px;
+}
+
+#form-card input{
+    border-style: solid;
+}
+
+#form-card small {
+    visibility: hidden;
+    display: block;
+    margin: 10px 0px 10px 40px;
+    color: var(--error-color);
+}
+
+#article-message{
+    width: 100vw;
+}
+
+#section-message img{
+    width: 15%;
+    height: auto;
+    margin: 50px;
+}
+
+#article-message p{
+    font-size: 30px;
+    text-align: center;
+}
+
+#article-message button{
+    background-color: var(--bg-color);
+    border: none;
+    color: #fff;
+    width: 25%;
+}
+
+@media screen and (max-width: 600px) {
+    #section-info{
+        display: none;
+    }
+
+    #section-form{
+        width: 100%;    
+    }       
+
+    #section-form h1{
+        display: inline;
+    }
+
+    #article-message p{
+        font-size: 20px;
+    }
+}

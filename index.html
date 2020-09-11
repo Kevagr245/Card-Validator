@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!--Contenedor principal-->
     <main class="container" id="main-container">
+        <!--Sección donde se aloja la información-->
         <section id="section-info" class="flex-center">
+            <!--Encabezado de la sección-->
             <header id="header-info">
                 <img src="icons/card.png" alt="card">
                 <h2>Valida tu tarjeta de crédito. Rápido. Fácil. Seguro</h2>
             </header>
+            <!--Información del proyecto-->
             <section id="main-info">
                 <h1>Wannapay</h1>
                 <p>Wannapay es una empresa internacional de verificación de tarjetas de crédito. 
@@ -22,20 +26,24 @@
                    miles de sitios de compras por internet en todo el mundo.</p>
             </section>
         </section>
+        <!--Sección donde se aloja el formulario-->
         <section id="section-form" class="flex-center">
             <h1>Wannapay</h1>
             <form id="form-card" method="POST">
                 <p>Ingresa los dígitos de tu tarjeta de crédito</p>
-                <input type="text" id="card-number" name="card-number" value="4083952015263" autocomplete="off">
+                <input type="text" id="card-number" name="card-number" autocomplete="off">
                 <small>Error message</small>
                 <button>VERIFICAR</button>
             </form>
         </section>
     </main>
+    <!--Contenedor del mensaje-->
     <section class="container hide" id="section-message">
         <article class="flex-center" id="article-message">
-            <img alt="logo" id="logo">
-            <p id="message">message</p>
+            <!--Imagen del icono-->
+            <img alt="logo" src="icons/icon.png" id="logo">
+            <!--Mensaje a mostrar-->
+            <p id="message"></p>
             <button id="btnReturn">REGRESAR</button>
         </article>
     </section>

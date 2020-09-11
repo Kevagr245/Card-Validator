@@ -9,44 +9,66 @@ form.addEventListener("submit", (e) => {
     checkCardNumber(input.value);
 });
 
+
 btnReturn.addEventListener("click", () =>{
     main.className = "container";
     sectionMessage.className = "container hide";
 })
 
+/**
+ * Método para revisar el número de la tarjeta.
+ * @param {*} number Es el número de la tarjeta. 
+ */
 function checkCardNumber(number){
-    if (number.length){
-        let digitsRegEx = /^[0-9]*$/.test(number);
-        if (digitsRegEx) 
-            if (!isValid(number))
-                showMessage(1,`Tu tarjeta ${number.replace(/\d(?=\d{4})/g, "#")} es válida.`);
-             else 
-                showMessage(0,`Tu tarjeta ${number} no es válida. Inténtalo de nuevo.`);
-        else 
-            showError("Ingrese solo números");
-    } else
+    if (number.length)
+        if (number.length < 15){
+            let digitsRegEx = /^[0-9]*$/.test(number);
+            if (digitsRegEx) 
+                if (!isValid(number))
+                    showMessage(1,`Tu tarjeta ${number.replace(/\d(?=\d{4})/g, "#")} es válida.`);
+                 else 
+                    showMessage(0,`Tu tarjeta ${number} no es válida. Inténtalo de nuevo.`);
+            else 
+                showError("Ingrese solo números");
+        } else 
+            showError("La longitud mínima es de 15 números");
+    else
         showError("Campo vacío");
 }
-   
-/* Funciones nuevas*/
+
+/**
+ * Método para validar el número de la tarjeta.
+ * @param {*} number Es el número de la tarjeta.
+ * @return {*} El resultado por el mod de 10.
+ */
 function isValid(number){
     let arrayNumber = reverseNumber(number);
     let result = totalArray(arrayNumber);
     return result % 10;
 }
 
+/**
+ * Método para crear un arreglo invirtiendo el orden de los elementos.
+ * @param {*} number Es el número de la tarjeta.
+ * @return {*} Un arreglo con el orden invertido de sus elementos.
+ */
 function reverseNumber(number){
     return Array.from(number, Number).reverse();
 }
 
-function totalArray(array){
+/**
+ * Método para obtener la suma total de sus elementos usando el logaritmo de Luhn.
+ * @param {*} array Es el arreglo a evaluar. 
+ * @returns {*} Es el resultado de la suma.
+ */
+function getTotalArray(array){
     let value, result = 0, length = array.length;
     for (let j = 0; j < length; j++){
         value = array[j] ;
         if (j % 2){
             value = array[j] * 2;
             if (value >= 10){
-              value = sum(value);  
+              value = getSum(value);  
             }
         }
         result += value;
@@ -54,7 +76,12 @@ function totalArray(array){
     return result
 }
 
-function sum(value){
+/**
+ * Método para obtener la suma de sus elementos.
+ * @param {*} value Es el número ha evaluar.
+ * @returns El resultado de la suma de sus elementos. 
+ */
+function getSum(value){
     value = value.toString();
     let sum = 0;
     for (k = 0;k < value.length;k++)
@@ -62,31 +89,10 @@ function sum(value){
     return sum;
 }
 
-/* Función vieja*/
-/*function isValid(number){
-    let length = number.length - 1;
-    let value;
-    let result = 0;
-    let reverseNumber = [];
-    for (let i = length; i >= 0; i--)
-        reverseNumber.push(parseInt(number.charAt(i)));
-    for (let j = 0; j <= length; j++){
-        value = reverseNumber[j] ;
-        if (j % 2){
-            value = reverseNumber[j] * 2;
-            if (value >= 10){
-                value = value.toString();
-                let sum = 0;
-                for (k = 0;k < value.length;k++)
-                    sum += parseInt(value[k]);
-                value = sum;
-            }
-        }
-        result += value;
-    }
-    return result % 10;
-}*/
-
+/**
+ * Método para mostrar un error en el input.
+ * @param {*} message Es el mensaje a mostrar.
+ */
 function showError(message){
     const small = document.querySelector('small');
     input.className = "error-input";
@@ -94,6 +100,11 @@ function showError(message){
     small.innerText = message;
 }
 
+/**
+ * Método para mostrar el mensaje en el contenedor de mensaje
+ * @param {*} icon Es el icon que quiere mostrar
+ * @param {*} message Es el mensaje a mostrar
+ */
 function showMessage(icon, message){
     const pMessage = document.getElementById("message");
     const imgLogo = document.getElementById("logo");
@@ -103,6 +114,10 @@ function showMessage(icon, message){
     sectionMessage.className = "container";   
 }
 
+/**
+ * Método para obtener la ruta de icono.
+ * @param {*} icon Es el tipo de icono que quiere mostrar.
+ */
 function getIcon(icon){
     if (icon)
         return "icons/valid.png";

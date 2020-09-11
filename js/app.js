@@ -11,8 +11,7 @@ form.addEventListener("submit", (e) => {
 
 
 btnReturn.addEventListener("click", () =>{
-    main.className = "container";
-    sectionMessage.className = "container hide";
+    returnPrincipal();
 })
 
 /**
@@ -123,4 +122,12 @@ function getIcon(icon){
         return "icons/valid.png";
     else 
         return "icons/no-valid.png"
+}
+
+/**
+ * Método para retornar a la página principal.
+ */
+function returnPrincipal(){
+    main.className = "container";
+    sectionMessage.className = "container hide";
 }

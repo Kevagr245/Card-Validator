@@ -1,15 +1,23 @@
+/**
+ * Constantes de los elementos de HTML
+ */
 const main = document.getElementById("main-container");
 const sectionMessage = document.getElementById("section-message");
 const input = document.getElementById("card-number");
 const form = document.getElementById("form-card");
 const btnReturn = document.getElementById("btnReturn")
 
+/**
+ * Evento del formulario
+ */
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     checkCardNumber(input.value);
 });
 
-
+/**
+ * Evento del botón de retornar
+ */
 btnReturn.addEventListener("click", () =>{
     returnPrincipal();
 })
@@ -42,7 +50,7 @@ function checkCardNumber(number){
  */
 function isValid(number){
     let arrayNumber = reverseNumber(number);
-    let result = totalArray(arrayNumber);
+    let result = getTotalArray(arrayNumber);
     return result % 10;
 }
 
@@ -101,27 +109,42 @@ function showError(message){
 
 /**
  * Método para mostrar el mensaje en el contenedor de mensaje
- * @param {*} icon Es el icon que quiere mostrar
+ * @param {*} type Es el tipo del mensaje
  * @param {*} message Es el mensaje a mostrar
  */
-function showMessage(icon, message){
+function showMessage(type, message){
     const pMessage = document.getElementById("message");
     const imgLogo = document.getElementById("logo");
-    imgLogo.setAttribute("src", getIcon(icon));   
+    imgLogo.setAttribute("src", getIcon(type));   
     pMessage.innerText = message;
     main.className = "container hide";
-    sectionMessage.className = "container";   
+    sectionMessage.className = "container";
+    btnReturn.innerHTML = getMessageButton(type);   
 }
 
 /**
  * Método para obtener la ruta de icono.
  * @param {*} icon Es el tipo de icono que quiere mostrar.
+ * @returns La ruta del icon 
  */
 function getIcon(icon){
     if (icon)
         return "icons/valid.png";
     else 
         return "icons/no-valid.png"
+}
+
+/**
+ * Método para obtener el mensaje a mostrar en el botón
+ * @param {*} type Es el tipo de mensaje a mostrar en el botón
+ * @returns El mensaje a mostar en el botón
+ */
+function getMessageButton(type)
+{
+    if (type)
+        return "REGRESAR";
+    else 
+        return "INTENTAR DE NUEVO";
 }
 
 /**

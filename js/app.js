@@ -27,20 +27,27 @@ btnReturn.addEventListener("click", () =>{
  * @param {*} number Es el número de la tarjeta. 
  */
 function checkCardNumber(number){
-    if (number.length)
-        if (number.length < 15){
-            let digitsRegEx = /^[0-9]*$/.test(number);
-            if (digitsRegEx) 
-                if (!isValid(number))
-                    showMessage(1,`Tu tarjeta ${number.replace(/\d(?=\d{4})/g, "#")} es válida.`);
-                 else 
-                    showMessage(0,`Tu tarjeta ${number} no es válida. Inténtalo de nuevo.`);
-            else 
-                showError("Ingrese solo números");
-        } else 
-            showError("La longitud mínima es de 15 números");
+    if (number.length) 
+        if (number.length >= 15)
+        
+            if (number.length <= 16)
+            {
+                let digitsRegEx = /^[0-9]*$/.test(number);
+                if (digitsRegEx) 
+                    if (!isValid(number))
+                        showMessage(1,`Tu tarjeta ${number.replace(/\d(?=\d{4})/g, "#")} es válida.`);
+                    else 
+                        showMessage(0,`Tu tarjeta ${number} no es válida. Inténtalo de nuevo.`);
+                else 
+                    showError("Ingrese solo números");
+            } else {
+                showError("Longitud máxim es de 15 números");
+            }
+        else {
+            showError("Longitud mínima es de 15 números");
+        }
     else
-        showError("Campo vacío");
+        showError("Por favor, ingrese el número de tarjeta");
 }
 
 /**

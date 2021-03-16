@@ -5,7 +5,7 @@ const main = document.getElementById("main-container");
 const sectionMessage = document.getElementById("section-message");
 const input = document.getElementById("card-number");
 const form = document.getElementById("form-card");
-const btnReturn = document.getElementById("btnReturn")
+const btnReturn = document.getElementById("btn-return")
 
 /**
  * Evento del formulario
@@ -164,4 +164,5 @@ function getMessageButton(type) {
 function returnPrincipal(){
     main.className = "container";
     sectionMessage.className = "container hide";
+    input.value = "";
 }
